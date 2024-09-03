@@ -1,0 +1,15 @@
+services:
+  anaconda:
+    container_name: "anaconda"
+    # dockerイメージ
+    image: continuumio/anaconda3
+
+    # 作業ディレクトリ作成
+    working_dir: /workspace
+
+    # 作業ディレクトリにバインドマウント
+    volumes:
+      - .:/workspace
+    ports:
+      - 8002:8080
+    command: jupyter notebook --ip 0.0.0.0 --port=8888 --allow-root --no-browser --NotebookApp.token=''
